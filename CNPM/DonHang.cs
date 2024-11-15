@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Guna.UI2.WinForms;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -16,15 +17,42 @@ namespace CNPM
         public buttonTatCa()
         {
             InitializeComponent();
-            LoadOrderData(); // Tải dữ liệu đơn hàng khi khởi tạo
-            TimKiem.TextChanged += TimKiem_TextChanged; // Gắn sự kiện tìm kiếm
+            LoadOrderData(); // Load initial order data
+            TimKiem.TextChanged += TimKiem_TextChanged; // Search functionality
             LoadOrderStatusCounts(); // Load the counts when initializing the control
             DataGridViewDonhang.CellDoubleClick += DataGridViewDonhang_CellDoubleClick;
-            ButtonReload.Click += ButtonReload_Click; // Sự kiện khi nhấn nút Reload
-            buttonupdate.Click += ButtonUpdateStatus_Click; // Sự kiện khi nhấn nút Cập nhật trạng thái
+            ButtonReload.Click += ButtonReload_Click; // Reload data when clicked
+            buttonupdate.Click += ButtonUpdateStatus_Click; // Update order status when clicked
 
+            // Add the click event for each button to filter orders based on their status
+            TatCa.Click += (sender, e) => FilterOrdersByStatus("Tất cả");
+            CanXuLi.Click += (sender, e) => FilterOrdersByStatus("Cần xử lí");
+            DaXacNhan.Click += (sender, e) => FilterOrdersByStatus("Đã xác nhận");
+            DangChuanBi.Click += (sender, e) => FilterOrdersByStatus("Đang chuẩn bị");
+            ChoGuiHang.Click += (sender, e) => FilterOrdersByStatus("Chờ gửi hàng");
+            DaGui.Click += (sender, e) => FilterOrdersByStatus("Đã gửi");
+            DaNhan.Click += (sender, e) => FilterOrdersByStatus("Đã nhận");
+            DaHuy.Click += (sender, e) => FilterOrdersByStatus("Đã hủy");
         }
 
+        private void FilterOrdersByStatus(string status)
+        {
+            if (orderDataTable != null)
+            {
+                if (status == "Tất cả")
+                {
+                    orderDataTable.DefaultView.RowFilter = string.Empty; // Show all orders
+                }
+                else
+                {
+                    // Filter by the specific status
+                    orderDataTable.DefaultView.RowFilter = $"[Trạng thái đơn hàng] = '{status}'";
+                }
+
+                // Update the DataGridView with filtered data
+                DataGridViewDonhang.DataSource = orderDataTable.DefaultView;
+            }
+        }
         private void ButtonReload_Click(object sender, EventArgs e)
         {
             LoadOrderData();
@@ -233,14 +261,14 @@ namespace CNPM
                 }
 
                 // Cập nhật các nhãn với giá trị đếm đơn hàng
-                number1.Text = statusCounts["Tất cả"].ToString();
-                number2.Text = statusCounts["Đã hủy"].ToString();
-                number3.Text = statusCounts["Cần xử lí"].ToString();
-                number4.Text = statusCounts["Đã xác nhận"].ToString();
-                number5.Text = statusCounts["Đang chuẩn bị"].ToString();
-                number6.Text = statusCounts["Chờ gửi hàng"].ToString();
-                number7.Text = statusCounts["Đã gửi"].ToString();
-                number8.Text = statusCounts["Đã nhận"].ToString();
+                guna2TextBox2.Text = statusCounts["Tất cả"].ToString();
+                guna2TextBox8.Text = statusCounts["Đã hủy"].ToString();
+                guna2TextBox1.Text = statusCounts["Cần xử lí"].ToString();
+                guna2TextBox3.Text = statusCounts["Đã xác nhận"].ToString();
+                guna2TextBox4.Text = statusCounts["Đang chuẩn bị"].ToString();
+                guna2TextBox5.Text = statusCounts["Chờ gửi hàng"].ToString();
+                guna2TextBox6.Text = statusCounts["Đã gửi"].ToString();
+                guna2TextBox7.Text = statusCounts["Đã nhận"].ToString();
             }
             catch (Exception ex)
             {
