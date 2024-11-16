@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace CNPM
@@ -23,16 +24,35 @@ namespace CNPM
             DataGridViewDonhang.CellDoubleClick += DataGridViewDonhang_CellDoubleClick;
             ButtonReload.Click += ButtonReload_Click; // Reload data when clicked
             buttonupdate.Click += ButtonUpdateStatus_Click; // Update order status when clicked
+            TatCa.Click += (sender, e) => { HandleButtonClick(TatCa, "Tất cả"); };
+            CanXuLi.Click += (sender, e) => { HandleButtonClick(CanXuLi, "Cần xử lí"); };
+            DaXacNhan.Click += (sender, e) => { HandleButtonClick(DaXacNhan, "Đã xác nhận"); };
+            DangChuanBi.Click += (sender, e) => { HandleButtonClick(DangChuanBi, "Đang chuẩn bị"); };
+            ChoGuiHang.Click += (sender, e) => { HandleButtonClick(ChoGuiHang, "Chờ gửi hàng"); };
+            DaGui.Click += (sender, e) => { HandleButtonClick(DaGui, "Đã gửi"); };
+            DaNhan.Click += (sender, e) => { HandleButtonClick(DaNhan, "Đã nhận"); };
+            DaHuy.Click += (sender, e) => { HandleButtonClick(DaHuy, "Đã hủy"); };
+        }
 
-            // Add the click event for each button to filter orders based on their status
-            TatCa.Click += (sender, e) => FilterOrdersByStatus("Tất cả");
-            CanXuLi.Click += (sender, e) => FilterOrdersByStatus("Cần xử lí");
-            DaXacNhan.Click += (sender, e) => FilterOrdersByStatus("Đã xác nhận");
-            DangChuanBi.Click += (sender, e) => FilterOrdersByStatus("Đang chuẩn bị");
-            ChoGuiHang.Click += (sender, e) => FilterOrdersByStatus("Chờ gửi hàng");
-            DaGui.Click += (sender, e) => FilterOrdersByStatus("Đã gửi");
-            DaNhan.Click += (sender, e) => FilterOrdersByStatus("Đã nhận");
-            DaHuy.Click += (sender, e) => FilterOrdersByStatus("Đã hủy");
+        // Reset màu tất cả các button trạng thái về màu mặc định
+        private void ResetButtonColors()
+        {
+            TatCa.FillColor = Color.FromArgb(240, 240, 240); // Màu mặc định
+            CanXuLi.FillColor = Color.FromArgb(240, 240, 240);
+            DaXacNhan.FillColor = Color.FromArgb(240, 240, 240);
+            DangChuanBi.FillColor = Color.FromArgb(240, 240, 240);
+            ChoGuiHang.FillColor = Color.FromArgb(240, 240, 240);
+            DaGui.FillColor = Color.FromArgb(240, 240, 240);
+            DaNhan.FillColor = Color.FromArgb(240, 240, 240);
+            DaHuy.FillColor = Color.FromArgb(240, 240, 240);
+        }
+
+        // Hàm xử lý khi button được bấm
+        private void HandleButtonClick(Guna2Button button, string status)
+        {
+            ResetButtonColors(); // Reset màu các button khác
+            button.FillColor = Color.FromArgb(183, 205, 240); // Đổi màu button được bấm sang màu đỏ
+            FilterOrdersByStatus(status); // Gọi hàm lọc trạng thái
         }
 
         private void FilterOrdersByStatus(string status)
@@ -261,14 +281,7 @@ namespace CNPM
                 }
 
                 // Cập nhật các nhãn với giá trị đếm đơn hàng
-                guna2TextBox2.Text = statusCounts["Tất cả"].ToString();
-                guna2TextBox8.Text = statusCounts["Đã hủy"].ToString();
-                guna2TextBox1.Text = statusCounts["Cần xử lí"].ToString();
-                guna2TextBox3.Text = statusCounts["Đã xác nhận"].ToString();
-                guna2TextBox4.Text = statusCounts["Đang chuẩn bị"].ToString();
-                guna2TextBox5.Text = statusCounts["Chờ gửi hàng"].ToString();
-                guna2TextBox6.Text = statusCounts["Đã gửi"].ToString();
-                guna2TextBox7.Text = statusCounts["Đã nhận"].ToString();
+               
             }
             catch (Exception ex)
             {
