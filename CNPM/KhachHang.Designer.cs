@@ -49,6 +49,7 @@
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ButtonReload = new Guna.UI2.WinForms.Guna2Button();
             ((System.ComponentModel.ISupportInitialize)(this.iconDonHang)).BeginInit();
             this.guna2Panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).BeginInit();
@@ -65,21 +66,22 @@
             // 
             this.labelDonHang.AutoSize = true;
             this.labelDonHang.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelDonHang.Location = new System.Drawing.Point(121, 49);
+            this.labelDonHang.Location = new System.Drawing.Point(136, 61);
             this.labelDonHang.Name = "labelDonHang";
-            this.labelDonHang.Size = new System.Drawing.Size(201, 38);
+            this.labelDonHang.Size = new System.Drawing.Size(242, 46);
             this.labelDonHang.TabIndex = 17;
             this.labelDonHang.Text = "Khách hàng";
             // 
             // iconDonHang
             // 
             this.iconDonHang.AutoRoundedCorners = true;
-            this.iconDonHang.BorderRadius = 26;
+            this.iconDonHang.BorderRadius = 32;
             this.iconDonHang.Image = ((System.Drawing.Image)(resources.GetObject("iconDonHang.Image")));
             this.iconDonHang.ImageRotate = 0F;
-            this.iconDonHang.Location = new System.Drawing.Point(47, 42);
+            this.iconDonHang.Location = new System.Drawing.Point(53, 52);
+            this.iconDonHang.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.iconDonHang.Name = "iconDonHang";
-            this.iconDonHang.Size = new System.Drawing.Size(59, 54);
+            this.iconDonHang.Size = new System.Drawing.Size(66, 68);
             this.iconDonHang.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.iconDonHang.TabIndex = 16;
             this.iconDonHang.TabStop = false;
@@ -90,9 +92,10 @@
             this.guna2Panel8.Controls.Add(this.guna2ComboBox1);
             this.guna2Panel8.Controls.Add(this.guna2PictureBox2);
             this.guna2Panel8.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(72)))), ((int)(((byte)(100)))));
-            this.guna2Panel8.Location = new System.Drawing.Point(913, 35);
+            this.guna2Panel8.Location = new System.Drawing.Point(1027, 44);
+            this.guna2Panel8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.guna2Panel8.Name = "guna2Panel8";
-            this.guna2Panel8.Size = new System.Drawing.Size(336, 79);
+            this.guna2Panel8.Size = new System.Drawing.Size(378, 99);
             this.guna2Panel8.TabIndex = 32;
             // 
             // guna2ComboBox1
@@ -110,9 +113,10 @@
             this.guna2ComboBox1.ItemHeight = 30;
             this.guna2ComboBox1.Items.AddRange(new object[] {
             "Shin Store"});
-            this.guna2ComboBox1.Location = new System.Drawing.Point(80, 19);
+            this.guna2ComboBox1.Location = new System.Drawing.Point(90, 24);
+            this.guna2ComboBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.guna2ComboBox1.Name = "guna2ComboBox1";
-            this.guna2ComboBox1.Size = new System.Drawing.Size(232, 36);
+            this.guna2ComboBox1.Size = new System.Drawing.Size(260, 36);
             this.guna2ComboBox1.StartIndex = 0;
             this.guna2ComboBox1.TabIndex = 1;
             // 
@@ -121,7 +125,8 @@
             this.guna2PictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.guna2PictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("guna2PictureBox2.Image")));
             this.guna2PictureBox2.ImageRotate = 0F;
-            this.guna2PictureBox2.Location = new System.Drawing.Point(9, 10);
+            this.guna2PictureBox2.Location = new System.Drawing.Point(10, 12);
+            this.guna2PictureBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.guna2PictureBox2.Name = "guna2PictureBox2";
             this.guna2PictureBox2.Size = new System.Drawing.Size(45, 50);
             this.guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -134,9 +139,10 @@
             this.guna2PictureBox3.FillColor = System.Drawing.Color.Transparent;
             this.guna2PictureBox3.Image = ((System.Drawing.Image)(resources.GetObject("guna2PictureBox3.Image")));
             this.guna2PictureBox3.ImageRotate = 0F;
-            this.guna2PictureBox3.Location = new System.Drawing.Point(64, 152);
+            this.guna2PictureBox3.Location = new System.Drawing.Point(72, 190);
+            this.guna2PictureBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.guna2PictureBox3.Name = "guna2PictureBox3";
-            this.guna2PictureBox3.Size = new System.Drawing.Size(30, 30);
+            this.guna2PictureBox3.Size = new System.Drawing.Size(34, 38);
             this.guna2PictureBox3.TabIndex = 34;
             this.guna2PictureBox3.TabStop = false;
             // 
@@ -158,14 +164,14 @@
             this.TimKiem.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.TimKiem.ForeColor = System.Drawing.Color.Black;
             this.TimKiem.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.TimKiem.Location = new System.Drawing.Point(99, 146);
-            this.TimKiem.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.TimKiem.Location = new System.Drawing.Point(111, 182);
+            this.TimKiem.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.TimKiem.Name = "TimKiem";
             this.TimKiem.PasswordChar = '\0';
             this.TimKiem.PlaceholderForeColor = System.Drawing.Color.Gray;
-            this.TimKiem.PlaceholderText = "Nhập tên khách hàng/Ngày sinh/ SĐT";
+            this.TimKiem.PlaceholderText = "Nhập tên khách hàng";
             this.TimKiem.SelectedText = "";
-            this.TimKiem.Size = new System.Drawing.Size(744, 41);
+            this.TimKiem.Size = new System.Drawing.Size(837, 51);
             this.TimKiem.TabIndex = 33;
             this.TimKiem.TextChanged += new System.EventHandler(this.TimKiem_TextChanged);
             // 
@@ -204,7 +210,8 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.DataGridViewKhachhang.DefaultCellStyle = dataGridViewCellStyle3;
             this.DataGridViewKhachhang.GridColor = System.Drawing.Color.Black;
-            this.DataGridViewKhachhang.Location = new System.Drawing.Point(64, 240);
+            this.DataGridViewKhachhang.Location = new System.Drawing.Point(72, 300);
+            this.DataGridViewKhachhang.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.DataGridViewKhachhang.Name = "DataGridViewKhachhang";
             this.DataGridViewKhachhang.RowHeadersVisible = false;
             this.DataGridViewKhachhang.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToFirstHeader;
@@ -216,7 +223,7 @@
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
             this.DataGridViewKhachhang.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.DataGridViewKhachhang.RowTemplate.Height = 24;
-            this.DataGridViewKhachhang.Size = new System.Drawing.Size(1185, 435);
+            this.DataGridViewKhachhang.Size = new System.Drawing.Size(1333, 544);
             this.DataGridViewKhachhang.TabIndex = 35;
             this.DataGridViewKhachhang.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.DataGridViewKhachhang.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -277,19 +284,40 @@
             this.Column6.MinimumWidth = 6;
             this.Column6.Name = "Column6";
             // 
+            // ButtonReload
+            // 
+            this.ButtonReload.BackColor = System.Drawing.Color.Transparent;
+            this.ButtonReload.BorderRadius = 17;
+            this.ButtonReload.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.ButtonReload.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.ButtonReload.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.ButtonReload.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.ButtonReload.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
+            this.ButtonReload.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ButtonReload.ForeColor = System.Drawing.Color.White;
+            this.ButtonReload.Location = new System.Drawing.Point(987, 182);
+            this.ButtonReload.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.ButtonReload.Name = "ButtonReload";
+            this.ButtonReload.Size = new System.Drawing.Size(202, 51);
+            this.ButtonReload.TabIndex = 36;
+            this.ButtonReload.Text = "Làm mới";
+            this.ButtonReload.Click += new System.EventHandler(this.ButtonReload_Click);
+            // 
             // KhachHang
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(239)))), ((int)(((byte)(227)))));
+            this.Controls.Add(this.ButtonReload);
             this.Controls.Add(this.DataGridViewKhachhang);
             this.Controls.Add(this.guna2PictureBox3);
             this.Controls.Add(this.TimKiem);
             this.Controls.Add(this.guna2Panel8);
             this.Controls.Add(this.labelDonHang);
             this.Controls.Add(this.iconDonHang);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "KhachHang";
-            this.Size = new System.Drawing.Size(1446, 752);
+            this.Size = new System.Drawing.Size(1627, 940);
             this.Load += new System.EventHandler(this.KhachHang_Load);
             ((System.ComponentModel.ISupportInitialize)(this.iconDonHang)).EndInit();
             this.guna2Panel8.ResumeLayout(false);
@@ -319,5 +347,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
+        private Guna.UI2.WinForms.Guna2Button ButtonReload;
     }
 }

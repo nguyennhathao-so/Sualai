@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration; // Để sử dụng ConfigurationManager
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
@@ -7,11 +8,12 @@ namespace CNPM
 {
     public partial class ThemKhoHang : Form
     {
-        private string connectionString = @"Data Source=Hphuc\MSSQLSERVERF;Initial Catalog=CNPM_database;Integrated Security=True";
+        private string connectionString;
 
         public ThemKhoHang()
         {
             InitializeComponent();
+            connectionString = ConfigurationManager.ConnectionStrings["MyDB"].ConnectionString;
         }
 
         private void ThemKhoHang_Load(object sender, EventArgs e)
@@ -24,8 +26,6 @@ namespace CNPM
             baohanh.Items.Add("Không");
         }
 
-
-        // Load categories into ComboBox
         private void LoadCategories()
         {
             string query = "SELECT CategoryID, CategoryName FROM Category";
@@ -43,10 +43,10 @@ namespace CNPM
                     guna2ComboBox1.DataSource = categories;
                     guna2ComboBox1.DisplayMember = "CategoryName"; // Display the category name in the ComboBox
                     guna2ComboBox1.ValueMember = "CategoryID"; // Use the CategoryID for inserting into the database
-                    
                 }
             }
         }
+
         private bool ValidateForm()
         {
             // Validate numeric fields, including removing any non-numeric characters
@@ -81,7 +81,6 @@ namespace CNPM
             this.Close();
         }
 
-        // Add new product to the Products table, including the selected CategoryID
         private void AddNewProduct()
         {
             try
@@ -118,6 +117,7 @@ namespace CNPM
                 MessageBox.Show("Error: " + ex.Message);
             }
         }
+
         private void ClearForm()
         {
             Tensp.Clear();
@@ -130,18 +130,13 @@ namespace CNPM
             baohanh.SelectedIndex = -1; // Reset warranty selection
         }
 
-
         private void LuuKhoHang_Click(object sender, EventArgs e)
         {
-            // Show the confirmation dialog
-           
-
-            // Check if the user clicked OK
-            
+            if (ValidateForm())
+            {
                 AddNewProduct(); // Proceed to add the product
-            
+            }
         }
-
 
         private void nenChiTiet_Paint(object sender, PaintEventArgs e)
         {
@@ -150,7 +145,7 @@ namespace CNPM
 
         private void baohanh_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            // Handle any specific logic for warranty selection if needed
         }
     }
 }

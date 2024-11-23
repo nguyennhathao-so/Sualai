@@ -28,10 +28,15 @@ namespace CNPM
 
         private void guna2ImageButton3_Click(object sender, EventArgs e)
         {
-            LogIn form = new LogIn();
+            //LogIn form = new LogIn();
+            //this.Hide();
+            //form.ShowDialog();
+            //this.Close();
+            XacNhanDangXuat form = new XacNhanDangXuat();
             this.Hide();
             form.ShowDialog();
             this.Close();
+
         }
 
         private void btnDonHang_Click(object sender, EventArgs e)

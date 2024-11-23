@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration; // Để sử dụng ConfigurationManager
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
@@ -8,70 +9,64 @@ namespace CNPM
 {
     public partial class NoiDungTrangChu : UserControl
     {
+        private string connectionString;
         private Chart myNewChart;
         private Timer refreshTimer;
-
-        private void InitializeTimer()
-        {
-            refreshTimer = new Timer();
-            refreshTimer.Interval = 5000; // Set interval to 5 seconds or any preferred interval
-            refreshTimer.Tick += (s, e) => LoadData();
-            refreshTimer.Start();
-        }
 
         public NoiDungTrangChu()
         {
             InitializeComponent();
+            connectionString = ConfigurationManager.ConnectionStrings["MyDB"].ConnectionString;
+
             LoadData();         // Load the data into the DataGridView
             CreateNewChart();   // Create the new chart
             LoadChartData();    // Load data into the new chart
             LoadMetricsData();  // Load and display Doanh Số, Đơn Hàng, Tồn Kho in the panels
-            InitializeTimer();   // Start the timer for real-time updates
+            InitializeTimer();  // Start the timer for real-time updates
         }
 
-        // Method to retrieve data from the SQL database and display it in the DataGridView
+        private void InitializeTimer()
+        {
+            refreshTimer = new Timer
+            {
+                Interval = 5000 // 5 seconds or any preferred interval
+            };
+            refreshTimer.Tick += (s, e) => LoadData();
+            refreshTimer.Start();
+        }
+
         private void LoadData()
         {
             try
             {
                 bangTrangChu.AutoGenerateColumns = false;
 
-                string connectionString = @"Data Source=Hphuc\MSSQLSERVERF;Initial Catalog=CNPM_database;Integrated Security=True";
                 string query = @"
-                SELECT p.ProductName AS SanPham, 
-                       SUM(od.Quantity) AS SoLuong, 
-                       SUM(od.Quantity * od.UnitPrice) AS DoanhThu
-                FROM OrderDetails od
-                JOIN Products p ON od.ProductID = p.ProductID
-                GROUP BY p.ProductName";
+                    SELECT p.ProductName AS SanPham, 
+                           SUM(od.Quantity) AS SoLuong, 
+                           SUM(od.Quantity * od.UnitPrice) AS DoanhThu
+                    FROM OrderDetails od
+                    JOIN Products p ON od.ProductID = p.ProductID
+                    GROUP BY p.ProductName";
 
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
                     con.Open();
-                    using (SqlCommand command = new SqlCommand(query, con))
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
                     {
-                        using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                        DataTable data = new DataTable();
+                        adapter.Fill(data);
+
+                        foreach (DataRow row in data.Rows)
                         {
-                            DataTable data1 = new DataTable();
-                            adapter.Fill(data1);
-
-                            if (data1 != null && data1.Rows.Count > 0)
-                            {
-                                foreach (DataRow row in data1.Rows)
-                                {
-                                    row["DoanhThu"] = Convert.ToDecimal(row["DoanhThu"]) / 1_000_000;  // Convert to millions
-                                }
-
-                                bangTrangChu.DataSource = data1;
-                                this.Column1.DataPropertyName = "SanPham";  // For 'Sản phẩm' column
-                                this.Column2.DataPropertyName = "SoLuong";  // For 'Số lượng' column
-                                this.Column3.DataPropertyName = "DoanhThu"; // For 'Doanh Thu' column
-                            }
-                            else
-                            {
-                                MessageBox.Show("No data found.");
-                            }
+                            row["DoanhThu"] = Convert.ToDecimal(row["DoanhThu"]) / 1_000_000; // Convert to millions
                         }
+
+                        bangTrangChu.DataSource = data;
+                        Column1.DataPropertyName = "SanPham";  // Bind 'Sản phẩm'
+                        Column2.DataPropertyName = "SoLuong";  // Bind 'Số lượng'
+                        Column3.DataPropertyName = "DoanhThu"; // Bind 'Doanh thu'
                     }
                 }
             }
@@ -81,64 +76,59 @@ namespace CNPM
             }
         }
 
-        // Method to create a new chart and add it to the form
         private void CreateNewChart()
         {
-            myNewChart = new Chart();
-            myNewChart.Size = new System.Drawing.Size(500, 400);
-            myNewChart.Location = new System.Drawing.Point(-10, 161);  // Set the location for the new chart
+            myNewChart = new Chart
+            {
+                Size = new System.Drawing.Size(500, 400),
+                Location = new System.Drawing.Point(-10, 161)
+            };
 
-            ChartArea chartArea = new ChartArea();
-            chartArea.AxisX.Title = "Tháng";
-            chartArea.AxisY.Title = "Doanh thu (VND)";
+            ChartArea chartArea = new ChartArea
+            {
+                AxisX = { Title = "Tháng" },
+                AxisY = { Title = "Doanh thu (Triệu VND)" }
+            };
             myNewChart.ChartAreas.Add(chartArea);
 
-            Series series = new Series();
-            series.ChartType = SeriesChartType.Column;  // Set the type of chart (Column chart)
+            Series series = new Series
+            {
+                ChartType = SeriesChartType.Column
+            };
             myNewChart.Series.Add(series);
 
             this.Controls.Add(myNewChart);
         }
 
-        // Method to load data into the new chart
         private void LoadChartData()
         {
             try
             {
-                string connectionString = @"Data Source=Hphuc\MSSQLSERVERF;Initial Catalog=CNPM_database;Integrated Security=True";
-
                 string query = @"
-                SELECT MONTH(o.OrderDate) AS Thang, 
-                       SUM(od.Quantity * od.UnitPrice) AS DoanhThu
-                FROM OrderDetails od
-                JOIN Orders o ON od.OrderID = o.OrderID
-                WHERE MONTH(o.OrderDate) BETWEEN 1 AND 12  
-                GROUP BY MONTH(o.OrderDate)
-                ORDER BY MONTH(o.OrderDate)";
+                    SELECT MONTH(o.OrderDate) AS Thang, 
+                           SUM(od.Quantity * od.UnitPrice) AS DoanhThu
+                    FROM OrderDetails od
+                    JOIN Orders o ON od.OrderID = o.OrderID
+                    WHERE MONTH(o.OrderDate) BETWEEN 1 AND 12  
+                    GROUP BY MONTH(o.OrderDate)
+                    ORDER BY MONTH(o.OrderDate)";
 
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
                     con.Open();
-
-                    using (SqlCommand command = new SqlCommand(query, con))
+                    using (SqlCommand cmd = new SqlCommand(query, con))
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
                     {
-                        using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                        DataTable data = new DataTable();
+                        adapter.Fill(data);
+
+                        myNewChart.Series[0].Points.Clear();
+                        foreach (DataRow row in data.Rows)
                         {
-                            DataTable data = new DataTable();
-                            adapter.Fill(data);
+                            int month = Convert.ToInt32(row["Thang"]);
+                            decimal revenue = Convert.ToDecimal(row["DoanhThu"]) / 1_000_000; // Convert to millions
 
-                            myNewChart.Series[0].Points.Clear();
-
-                            foreach (DataRow row in data.Rows)
-                            {
-                                int month = Convert.ToInt32(row["Thang"]);
-                                decimal revenue = Convert.ToDecimal(row["DoanhThu"]) / 1_000_000;  // Convert to millions
-
-                                myNewChart.Series[0].Points.AddXY(month, revenue);
-                            }
-
-                            myNewChart.ChartAreas[0].AxisX.Title = "Tháng";
-                            myNewChart.ChartAreas[0].AxisY.Title = "Doanh thu (Triệu VND)";
+                            myNewChart.Series[0].Points.AddXY(month, revenue);
                         }
                     }
                 }
@@ -149,57 +139,52 @@ namespace CNPM
             }
         }
 
-        // Method to fetch data for metrics like Doanh Số, Đơn Hàng, and Tồn Kho
         private void LoadMetricsData()
         {
             try
             {
-                string connectionString = @"Data Source=Hphuc\MSSQLSERVERF;Initial Catalog=CNPM_database;Integrated Security=True";
+                string revenueQuery = @"
+            SELECT SUM(od.Quantity * od.UnitPrice) AS DoanhSo 
+            FROM OrderDetails od
+            JOIN Orders o ON od.OrderID = o.OrderID
+            WHERE YEAR(o.OrderDate) = 2024";
+
+                string ordersQuery = @"
+            SELECT COUNT(o.OrderID) AS DonHang 
+            FROM Orders o 
+            WHERE YEAR(o.OrderDate) = 2024";
+
+                string stockQuery = @"
+            SELECT SUM(p.Stock - ISNULL(od.TotalQuantity, 0)) AS TonKho
+            FROM Products p
+            LEFT JOIN (
+                SELECT ProductID, SUM(Quantity) AS TotalQuantity
+                FROM OrderDetails
+                GROUP BY ProductID
+            ) od ON p.ProductID = od.ProductID";
 
                 using (SqlConnection con = new SqlConnection(connectionString))
                 {
                     con.Open();
 
-                    // Fetch Doanh Số (Revenue)
-                    string revenueQuery = @"
-                        SELECT SUM(od.Quantity * od.UnitPrice) AS DoanhSo 
-                        FROM OrderDetails od
-                        JOIN Orders o ON od.OrderID = o.OrderID
-                        WHERE YEAR(o.OrderDate) = 2023";
-
-                    // Fetch Đơn Hàng (Orders count)
-                    string ordersQuery = @"
-                        SELECT COUNT(o.OrderID) AS DonHang 
-                        FROM Orders o 
-                        WHERE YEAR(o.OrderDate) = 2023";
-
-                    // Fetch Tồn Kho (Remaining Stock)
-                    string stockQuery = @"
-                        SELECT SUM(p.Stock - ISNULL(od.Quantity, 0)) AS TonKho
-                        FROM Products p
-                        LEFT JOIN OrderDetails od ON p.ProductID = od.ProductID";
-
-                    using (SqlCommand revenueCommand = new SqlCommand(revenueQuery, con))
-                    using (SqlCommand ordersCommand = new SqlCommand(ordersQuery, con))
-                    using (SqlCommand stockCommand = new SqlCommand(stockQuery, con))
+                    using (SqlCommand revenueCmd = new SqlCommand(revenueQuery, con))
+                    using (SqlCommand ordersCmd = new SqlCommand(ordersQuery, con))
+                    using (SqlCommand stockCmd = new SqlCommand(stockQuery, con))
                     {
-                        decimal currentRevenue = Convert.ToDecimal(revenueCommand.ExecuteScalar());
-                        textbox1.Text = (currentRevenue / 1_000_000).ToString("N0");  // Display in millions
+                        decimal currentRevenue = Convert.ToDecimal(revenueCmd.ExecuteScalar());
+                        textbox1.Text = (currentRevenue / 1_000_000).ToString("N0");
                         textbox1.TextAlign = HorizontalAlignment.Center;
 
-                        int currentOrders = Convert.ToInt32(ordersCommand.ExecuteScalar());
-                        textbox3.Text = currentOrders.ToString();  // Display orders count
+                        int currentOrders = Convert.ToInt32(ordersCmd.ExecuteScalar());
+                        textbox3.Text = currentOrders.ToString();
                         textbox3.TextAlign = HorizontalAlignment.Center;
 
-
-                        int currentStock = Convert.ToInt32(stockCommand.ExecuteScalar());
-                        textbox5.Text = currentStock.ToString();  // Display remaining stock
+                        int currentStock = Convert.ToInt32(stockCmd.ExecuteScalar());
+                        textbox5.Text = currentStock.ToString();
                         textbox5.TextAlign = HorizontalAlignment.Center;
-
                     }
                 }
 
-                // Calculate and display percentage increases only for Doanh Số and Đơn Hàng
                 CalculateAndDisplayIncrease();
             }
             catch (Exception ex)
@@ -208,10 +193,9 @@ namespace CNPM
             }
         }
 
-        // Helper methods to fetch data for two periods
+
         private decimal GetRevenueForPeriod(string startDate, string endDate)
         {
-            string connectionString = @"Data Source=Hphuc\MSSQLSERVERF;Initial Catalog=CNPM_database;Integrated Security=True";
             string query = @"
                 SELECT SUM(od.Quantity * od.UnitPrice) AS DoanhSo 
                 FROM OrderDetails od
@@ -231,7 +215,6 @@ namespace CNPM
 
         private int GetOrdersForPeriod(string startDate, string endDate)
         {
-            string connectionString = @"Data Source=Hphuc\MSSQLSERVERF;Initial Catalog=CNPM_database;Integrated Security=True";
             string query = @"
                 SELECT COUNT(OrderID) AS DonHang 
                 FROM Orders 
@@ -248,17 +231,16 @@ namespace CNPM
             }
         }
 
-        // Calculate percentage increase and display them in textboxes
         private void CalculateAndDisplayIncrease()
         {
-            decimal firstHalfRevenue = GetRevenueForPeriod("2023-01-01", "2023-06-30");
-            decimal secondHalfRevenue = GetRevenueForPeriod("2023-07-01", "2023-12-31");
-            double revenueIncrease = CalculatePercentageIncrease((double)firstHalfRevenue, (double)secondHalfRevenue);  // Convert to double
-            textbox2.Text = "↑ " + revenueIncrease.ToString("F2") + "%";  // Display the increase in textbox2
+            decimal firstHalfRevenue = GetRevenueForPeriod("2024-01-01", "2024-06-30");
+            decimal secondHalfRevenue = GetRevenueForPeriod("2024-07-01", "2024-12-31");
+            double revenueIncrease = CalculatePercentageIncrease((double)firstHalfRevenue, (double)secondHalfRevenue);
+            textbox2.Text = "↑ " + revenueIncrease.ToString("F2") + "%";
             textbox2.TextAlign = HorizontalAlignment.Center;
 
-            int firstHalfOrders = GetOrdersForPeriod("2023-01-01", "2023-06-30");
-            int secondHalfOrders = GetOrdersForPeriod("2023-07-01", "2023-12-31");
+            int firstHalfOrders = GetOrdersForPeriod("2024-01-01", "2024-06-30");
+            int secondHalfOrders = GetOrdersForPeriod("2024-07-01", "2024-12-31");
             double ordersIncrease = CalculatePercentageIncrease(firstHalfOrders, secondHalfOrders);
             textbox4.Text = "↑ " + ordersIncrease.ToString("F2") + "%";
             textbox4.TextAlign = HorizontalAlignment.Center;
@@ -266,18 +248,51 @@ namespace CNPM
 
         private double CalculatePercentageIncrease(double firstHalf, double secondHalf)
         {
-            if (firstHalf == 0) return 0;  // Avoid division by zero
-            return ((secondHalf - firstHalf) / firstHalf) * 100;
+            return firstHalf == 0 ? 0 : ((secondHalf - firstHalf) / firstHalf) * 100;
         }
 
         private void NoiDungTrangChu_Load(object sender, EventArgs e)
         {
-
+            ConfigEncryption.EncryptConnectionStrings();
         }
-
-        private void bangTrangChu_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        public static class ConfigEncryption
         {
+            public static void EncryptConnectionStrings()
+            {
+                try
+                {
+                    // Lấy đường dẫn thực sự của file cấu hình hiện tại
+                    string exePath = AppDomain.CurrentDomain.SetupInformation.ConfigurationFile;
 
+                    ExeConfigurationFileMap configFileMap = new ExeConfigurationFileMap
+                    {
+                        ExeConfigFilename = exePath
+                    };
+
+                    Configuration config = ConfigurationManager.OpenMappedExeConfiguration(configFileMap, ConfigurationUserLevel.None);
+                    ConfigurationSection section = config.GetSection("connectionStrings");
+
+                    // Kiểm tra nếu phần cấu hình không được mã hóa, thì tiến hành mã hóa
+                    if (section != null && !section.SectionInformation.IsProtected)
+                    {
+                        section.SectionInformation.ProtectSection("RsaProtectedConfigurationProvider");
+                        config.Save(ConfigurationSaveMode.Modified);
+
+                        // Thay vì hiện MessageBox, bạn có thể ghi log lại
+                        Console.WriteLine("Chuỗi kết nối đã được mã hóa thành công.");
+                    }
+                    else
+                    {
+                        // Không cần làm gì nếu chuỗi kết nối đã được mã hóa hoặc không tìm thấy cấu hình
+                        Console.WriteLine("Chuỗi kết nối đã được mã hóa trước đó hoặc không tìm thấy phần cấu hình.");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    // Ghi log lại lỗi nếu có xảy ra, thay vì hiển thị MessageBox
+                    Console.WriteLine("Có lỗi xảy ra khi mã hóa: " + ex.Message);
+                }
+            }
         }
     }
 }

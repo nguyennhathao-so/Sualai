@@ -16,5 +16,20 @@ namespace CNPM
         {
             InitializeComponent();
         }
+
+        private void nenChiTiet_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void ChinhSuacs_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LuuKhoHang_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

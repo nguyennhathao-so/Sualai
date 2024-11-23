@@ -529,6 +529,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "buttonTatCa";
             this.Size = new System.Drawing.Size(1614, 930);
+            this.Load += new System.EventHandler(this.buttonTatCa_Load);
             ((System.ComponentModel.ISupportInitialize)(this.iconDonHang)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DataGridViewDonhang)).EndInit();

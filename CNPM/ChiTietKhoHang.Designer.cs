@@ -48,8 +48,6 @@
             this.textboxkho = new Guna.UI2.WinForms.Guna2TextBox();
             this.textboxnganhhang = new Guna.UI2.WinForms.Guna2TextBox();
             this.textboxgia = new Guna.UI2.WinForms.Guna2TextBox();
-            this.xoa = new Guna.UI2.WinForms.Guna2Button();
-            this.Sua = new Guna.UI2.WinForms.Guna2Button();
             this.thuonghieu = new Guna.UI2.WinForms.Guna2TextBox();
             this.MaSP = new Guna.UI2.WinForms.Guna2TextBox();
             this.Exit = new Guna.UI2.WinForms.Guna2CircleButton();
@@ -79,8 +77,6 @@
             this.nenChiTiet.Controls.Add(this.textboxkho);
             this.nenChiTiet.Controls.Add(this.textboxnganhhang);
             this.nenChiTiet.Controls.Add(this.textboxgia);
-            this.nenChiTiet.Controls.Add(this.xoa);
-            this.nenChiTiet.Controls.Add(this.Sua);
             this.nenChiTiet.Controls.Add(this.thuonghieu);
             this.nenChiTiet.Controls.Add(this.MaSP);
             this.nenChiTiet.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
@@ -89,6 +85,7 @@
             this.nenChiTiet.Name = "nenChiTiet";
             this.nenChiTiet.Size = new System.Drawing.Size(831, 669);
             this.nenChiTiet.TabIndex = 3;
+            this.nenChiTiet.Paint += new System.Windows.Forms.PaintEventHandler(this.nenChiTiet_Paint);
             // 
             // textboxbaohanh
             // 
@@ -386,41 +383,6 @@
             this.textboxgia.TabIndex = 6;
             this.textboxgia.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // xoa
-            // 
-            this.xoa.BorderRadius = 10;
-            this.xoa.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.xoa.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.xoa.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.xoa.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.xoa.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
-            this.xoa.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.xoa.ForeColor = System.Drawing.Color.White;
-            this.xoa.Image = ((System.Drawing.Image)(resources.GetObject("xoa.Image")));
-            this.xoa.Location = new System.Drawing.Point(721, 35);
-            this.xoa.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.xoa.Name = "xoa";
-            this.xoa.Size = new System.Drawing.Size(65, 50);
-            this.xoa.TabIndex = 3;
-            // 
-            // Sua
-            // 
-            this.Sua.BorderRadius = 10;
-            this.Sua.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.Sua.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.Sua.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.Sua.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.Sua.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(100)))), ((int)(((byte)(100)))));
-            this.Sua.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.Sua.ForeColor = System.Drawing.Color.White;
-            this.Sua.Image = ((System.Drawing.Image)(resources.GetObject("Sua.Image")));
-            this.Sua.Location = new System.Drawing.Point(629, 35);
-            this.Sua.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Sua.Name = "Sua";
-            this.Sua.Size = new System.Drawing.Size(65, 50);
-            this.Sua.TabIndex = 2;
-            this.Sua.Click += new System.EventHandler(this.Sua_Click);
-            // 
             // thuonghieu
             // 
             this.thuonghieu.BorderRadius = 14;
@@ -547,8 +509,6 @@
         private Guna.UI2.WinForms.Guna2CircleButton Exit;
         private Guna.UI2.WinForms.Guna2TextBox MaSP;
         private Guna.UI2.WinForms.Guna2TextBox thuonghieu;
-        private Guna.UI2.WinForms.Guna2Button xoa;
-        private Guna.UI2.WinForms.Guna2Button Sua;
         private Guna.UI2.WinForms.Guna2TextBox textboxkho;
         private Guna.UI2.WinForms.Guna2TextBox textboxnganhhang;
         private Guna.UI2.WinForms.Guna2TextBox textboxgia;

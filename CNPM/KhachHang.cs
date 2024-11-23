@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration; // Để sử dụng ConfigurationManager
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
@@ -8,13 +9,16 @@ namespace CNPM
     public partial class KhachHang : UserControl
     {
         private DataTable customerDataTable;
+        private readonly string connectionString;
 
         public KhachHang()
         {
             InitializeComponent();
-            ConfigureDataGridView();  // Set up columns once
-            LoadCustomerData();       // Load data on initialization
-            TimKiem.TextChanged += TimKiem_TextChanged; // Attach search event to TimKiem
+            connectionString = ConfigurationManager.ConnectionStrings["MyDB"].ConnectionString;
+
+            ConfigureDataGridView();  // Cấu hình các cột của DataGridView
+            LoadCustomerData();       // Tải dữ liệu khách hàng khi khởi tạo
+            TimKiem.TextChanged += TimKiem_TextChanged; // Xử lý tìm kiếm
         }
 
         private void ConfigureDataGridView()
@@ -22,7 +26,7 @@ namespace CNPM
             DataGridViewKhachhang.AutoGenerateColumns = false;
             DataGridViewKhachhang.Columns.Clear();
 
-            // Define the columns for DataGridView
+            // Định nghĩa các cột của DataGridView
             DataGridViewKhachhang.Columns.Add(new DataGridViewTextBoxColumn
             {
                 Name = "Tên khách hàng",
@@ -63,8 +67,6 @@ namespace CNPM
 
         private void LoadCustomerData()
         {
-            string connectionString = @"Data Source=Hphuc\MSSQLSERVERF;Initial Catalog=CNPM_database;Integrated Security=True";
-
             try
             {
                 string query = @"
@@ -99,27 +101,25 @@ namespace CNPM
                 {
                     con.Open();
                     using (SqlCommand cmd = new SqlCommand(query, con))
+                    using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
                     {
-                        using (SqlDataAdapter adapter = new SqlDataAdapter(cmd))
-                        {
-                            customerDataTable = new DataTable();
-                            adapter.Fill(customerDataTable);
+                        customerDataTable = new DataTable();
+                        adapter.Fill(customerDataTable);
 
-                            if (customerDataTable.Rows.Count > 0)
-                            {
-                                DataGridViewKhachhang.DataSource = customerDataTable;
-                            }
-                            else
-                            {
-                                MessageBox.Show("Không có dữ liệu để hiển thị.");
-                            }
+                        if (customerDataTable.Rows.Count > 0)
+                        {
+                            DataGridViewKhachhang.DataSource = customerDataTable;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Không có dữ liệu để hiển thị.");
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi: " + ex.Message);
+                MessageBox.Show("Lỗi khi tải dữ liệu khách hàng: " + ex.Message);
             }
         }
 
@@ -131,12 +131,10 @@ namespace CNPM
             {
                 if (!string.IsNullOrEmpty(filterText))
                 {
-                    // Apply filter for name and phone; exclude date filtering to avoid errors with LIKE operator
                     string filter = $"[Tên khách hàng] LIKE '%{filterText}%' OR [Số điện thoại] LIKE '%{filterText}%'";
 
-                    // Add specific date filtering if the text matches a date pattern
-                    DateTime date;
-                    if (DateTime.TryParse(filterText, out date))
+                    // Nếu filterText có định dạng ngày hợp lệ, thêm vào bộ lọc
+                    if (DateTime.TryParse(filterText, out DateTime date))
                     {
                         filter += $" OR CONVERT([Ngày sinh], 'System.String') LIKE '%{date.ToShortDateString()}%'";
                     }
@@ -148,14 +146,18 @@ namespace CNPM
                     customerDataTable.DefaultView.RowFilter = string.Empty;
                 }
 
-                // Update DataGridView
                 DataGridViewKhachhang.DataSource = customerDataTable.DefaultView;
             }
         }
 
         private void KhachHang_Load(object sender, EventArgs e)
         {
+            // Hàm này được giữ lại nếu cần bổ sung logic khi load UserControl.
+        }
 
+        private void ButtonReload_Click(object sender, EventArgs e)
+        {
+            LoadCustomerData();
         }
     }
 }

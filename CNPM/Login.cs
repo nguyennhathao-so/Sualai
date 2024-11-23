@@ -14,7 +14,8 @@ namespace CNPM
     public partial class LogIn : Form
     {
 
-       
+        string connectionString = System.Configuration.ConfigurationManager.ConnectionStrings["MyDB"].ConnectionString;
+        SqlConnection connection;
         public LogIn()
         {
             InitializeComponent();
@@ -37,9 +38,9 @@ namespace CNPM
         {
             try
             {
-                SqlConnection con = new SqlConnection(@"Data Source=Hphuc\MSSQLSERVERF;Initial Catalog=CNPM_database;Integrated Security=True");
-                con.Open();
-                string tk = TenDN.Text;
+                using (SqlConnection con = new SqlConnection(connectionString)) { 
+                    con.Open();
+                    string tk = TenDN.Text;
                 string mk = MK.Text;
                 string sql = "SELECT * FROM Login WHERE taikhoan  = @tk and matkhau = @mk";
                 SqlCommand cmd = new SqlCommand(sql, con);
@@ -57,11 +58,13 @@ namespace CNPM
                 {
                     MessageBox.Show("Đăng nhập thất bại, vui lòng thử lại!");
                 }
+                
+               }
 
             }
-            catch (Exception ex)
+            catch (SqlException ex)
             {
-                MessageBox.Show("Lỗi kết nối!");
+                MessageBox.Show($"SQL Error: {ex.Message}\nCode: {ex.Number}");
             }
         }
 

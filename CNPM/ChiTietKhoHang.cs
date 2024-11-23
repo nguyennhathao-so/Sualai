@@ -54,5 +54,10 @@ namespace CNPM
         {
 
         }
+
+        private void nenChiTiet_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

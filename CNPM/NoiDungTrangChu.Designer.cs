@@ -116,7 +116,8 @@
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.bangTrangChu.DefaultCellStyle = dataGridViewCellStyle3;
             this.bangTrangChu.GridColor = System.Drawing.Color.Black;
-            this.bangTrangChu.Location = new System.Drawing.Point(822, 215);
+            this.bangTrangChu.Location = new System.Drawing.Point(925, 269);
+            this.bangTrangChu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.bangTrangChu.Name = "bangTrangChu";
             this.bangTrangChu.RowHeadersVisible = false;
             this.bangTrangChu.RowHeadersWidth = 51;
@@ -128,7 +129,7 @@
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.bangTrangChu.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.bangTrangChu.RowTemplate.Height = 24;
-            this.bangTrangChu.Size = new System.Drawing.Size(532, 475);
+            this.bangTrangChu.Size = new System.Drawing.Size(598, 594);
             this.bangTrangChu.TabIndex = 39;
             this.bangTrangChu.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
             this.bangTrangChu.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -151,7 +152,6 @@
             this.bangTrangChu.ThemeStyle.RowsStyle.Height = 24;
             this.bangTrangChu.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.bangTrangChu.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.bangTrangChu.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.bangTrangChu_CellContentClick);
             // 
             // Column1
             // 
@@ -194,9 +194,10 @@
             this.guna2Panel8.Controls.Add(this.guna2ComboBox1);
             this.guna2Panel8.Controls.Add(this.guna2PictureBox2);
             this.guna2Panel8.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(72)))), ((int)(((byte)(100)))));
-            this.guna2Panel8.Location = new System.Drawing.Point(943, 45);
+            this.guna2Panel8.Location = new System.Drawing.Point(1061, 56);
+            this.guna2Panel8.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.guna2Panel8.Name = "guna2Panel8";
-            this.guna2Panel8.Size = new System.Drawing.Size(336, 79);
+            this.guna2Panel8.Size = new System.Drawing.Size(378, 99);
             this.guna2Panel8.TabIndex = 38;
             // 
             // guna2ComboBox1
@@ -214,9 +215,10 @@
             this.guna2ComboBox1.ItemHeight = 30;
             this.guna2ComboBox1.Items.AddRange(new object[] {
             "Shin Store"});
-            this.guna2ComboBox1.Location = new System.Drawing.Point(80, 19);
+            this.guna2ComboBox1.Location = new System.Drawing.Point(90, 24);
+            this.guna2ComboBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.guna2ComboBox1.Name = "guna2ComboBox1";
-            this.guna2ComboBox1.Size = new System.Drawing.Size(232, 36);
+            this.guna2ComboBox1.Size = new System.Drawing.Size(260, 36);
             this.guna2ComboBox1.StartIndex = 0;
             this.guna2ComboBox1.TabIndex = 1;
             // 
@@ -225,7 +227,8 @@
             this.guna2PictureBox2.BackColor = System.Drawing.Color.Transparent;
             this.guna2PictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("guna2PictureBox2.Image")));
             this.guna2PictureBox2.ImageRotate = 0F;
-            this.guna2PictureBox2.Location = new System.Drawing.Point(9, 10);
+            this.guna2PictureBox2.Location = new System.Drawing.Point(10, 12);
+            this.guna2PictureBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.guna2PictureBox2.Name = "guna2PictureBox2";
             this.guna2PictureBox2.Size = new System.Drawing.Size(45, 50);
             this.guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -243,9 +246,10 @@
             this.guna2Button2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.guna2Button2.Font = new System.Drawing.Font("Segoe UI Semibold", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2Button2.ForeColor = System.Drawing.Color.Black;
-            this.guna2Button2.Location = new System.Drawing.Point(929, 164);
+            this.guna2Button2.Location = new System.Drawing.Point(1045, 205);
+            this.guna2Button2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.guna2Button2.Name = "guna2Button2";
-            this.guna2Button2.Size = new System.Drawing.Size(365, 45);
+            this.guna2Button2.Size = new System.Drawing.Size(411, 56);
             this.guna2Button2.TabIndex = 37;
             this.guna2Button2.Text = "Top sản phẩm bán chạy ";
             // 
@@ -257,9 +261,10 @@
             this.guna2Panel7.Controls.Add(this.textbox6);
             this.guna2Panel7.Controls.Add(this.textbox5);
             this.guna2Panel7.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(215)))), ((int)(((byte)(136)))));
-            this.guna2Panel7.Location = new System.Drawing.Point(665, 585);
+            this.guna2Panel7.Location = new System.Drawing.Point(748, 731);
+            this.guna2Panel7.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.guna2Panel7.Name = "guna2Panel7";
-            this.guna2Panel7.Size = new System.Drawing.Size(152, 106);
+            this.guna2Panel7.Size = new System.Drawing.Size(171, 132);
             this.guna2Panel7.TabIndex = 36;
             // 
             // textbox6
@@ -267,9 +272,10 @@
             this.textbox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(215)))), ((int)(((byte)(136)))));
             this.textbox6.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textbox6.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textbox6.Location = new System.Drawing.Point(23, 69);
+            this.textbox6.Location = new System.Drawing.Point(26, 86);
+            this.textbox6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textbox6.Name = "textbox6";
-            this.textbox6.Size = new System.Drawing.Size(107, 23);
+            this.textbox6.Size = new System.Drawing.Size(120, 28);
             this.textbox6.TabIndex = 5;
             // 
             // textbox5
@@ -277,9 +283,10 @@
             this.textbox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(215)))), ((int)(((byte)(136)))));
             this.textbox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textbox5.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textbox5.Location = new System.Drawing.Point(23, 30);
+            this.textbox5.Location = new System.Drawing.Point(26, 38);
+            this.textbox5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textbox5.Name = "textbox5";
-            this.textbox5.Size = new System.Drawing.Size(107, 23);
+            this.textbox5.Size = new System.Drawing.Size(120, 28);
             this.textbox5.TabIndex = 4;
             // 
             // guna2Panel6
@@ -290,9 +297,10 @@
             this.guna2Panel6.Controls.Add(this.textbox4);
             this.guna2Panel6.Controls.Add(this.textbox3);
             this.guna2Panel6.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(68)))), ((int)(((byte)(22)))));
-            this.guna2Panel6.Location = new System.Drawing.Point(665, 412);
+            this.guna2Panel6.Location = new System.Drawing.Point(748, 515);
+            this.guna2Panel6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.guna2Panel6.Name = "guna2Panel6";
-            this.guna2Panel6.Size = new System.Drawing.Size(152, 106);
+            this.guna2Panel6.Size = new System.Drawing.Size(171, 132);
             this.guna2Panel6.TabIndex = 35;
             // 
             // textbox4
@@ -300,9 +308,10 @@
             this.textbox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(68)))), ((int)(((byte)(22)))));
             this.textbox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textbox4.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textbox4.Location = new System.Drawing.Point(23, 69);
+            this.textbox4.Location = new System.Drawing.Point(26, 86);
+            this.textbox4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textbox4.Name = "textbox4";
-            this.textbox4.Size = new System.Drawing.Size(107, 23);
+            this.textbox4.Size = new System.Drawing.Size(120, 28);
             this.textbox4.TabIndex = 3;
             // 
             // textbox3
@@ -310,9 +319,10 @@
             this.textbox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(233)))), ((int)(((byte)(68)))), ((int)(((byte)(22)))));
             this.textbox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textbox3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textbox3.Location = new System.Drawing.Point(23, 30);
+            this.textbox3.Location = new System.Drawing.Point(26, 38);
+            this.textbox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textbox3.Name = "textbox3";
-            this.textbox3.Size = new System.Drawing.Size(107, 23);
+            this.textbox3.Size = new System.Drawing.Size(120, 28);
             this.textbox3.TabIndex = 2;
             // 
             // guna2Panel5
@@ -323,9 +333,10 @@
             this.guna2Panel5.Controls.Add(this.textbox2);
             this.guna2Panel5.Controls.Add(this.textbox1);
             this.guna2Panel5.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(16)))));
-            this.guna2Panel5.Location = new System.Drawing.Point(665, 239);
+            this.guna2Panel5.Location = new System.Drawing.Point(748, 299);
+            this.guna2Panel5.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.guna2Panel5.Name = "guna2Panel5";
-            this.guna2Panel5.Size = new System.Drawing.Size(152, 106);
+            this.guna2Panel5.Size = new System.Drawing.Size(171, 132);
             this.guna2Panel5.TabIndex = 34;
             // 
             // textbox2
@@ -333,9 +344,10 @@
             this.textbox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(16)))));
             this.textbox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textbox2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textbox2.Location = new System.Drawing.Point(23, 70);
+            this.textbox2.Location = new System.Drawing.Point(26, 88);
+            this.textbox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textbox2.Name = "textbox2";
-            this.textbox2.Size = new System.Drawing.Size(107, 23);
+            this.textbox2.Size = new System.Drawing.Size(120, 28);
             this.textbox2.TabIndex = 1;
             // 
             // textbox1
@@ -343,9 +355,10 @@
             this.textbox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(237)))), ((int)(((byte)(16)))));
             this.textbox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textbox1.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textbox1.Location = new System.Drawing.Point(23, 31);
+            this.textbox1.Location = new System.Drawing.Point(26, 39);
+            this.textbox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.textbox1.Name = "textbox1";
-            this.textbox1.Size = new System.Drawing.Size(107, 23);
+            this.textbox1.Size = new System.Drawing.Size(120, 28);
             this.textbox1.TabIndex = 0;
             // 
             // guna2Panel4
@@ -355,9 +368,10 @@
             this.guna2Panel4.BorderThickness = 2;
             this.guna2Panel4.Controls.Add(this.label4);
             this.guna2Panel4.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2Panel4.Location = new System.Drawing.Point(665, 535);
+            this.guna2Panel4.Location = new System.Drawing.Point(748, 669);
+            this.guna2Panel4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.guna2Panel4.Name = "guna2Panel4";
-            this.guna2Panel4.Size = new System.Drawing.Size(152, 44);
+            this.guna2Panel4.Size = new System.Drawing.Size(171, 55);
             this.guna2Panel4.TabIndex = 33;
             // 
             // label4
@@ -365,9 +379,9 @@
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(26, 13);
+            this.label4.Location = new System.Drawing.Point(29, 16);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(83, 22);
+            this.label4.Size = new System.Drawing.Size(96, 26);
             this.label4.TabIndex = 0;
             this.label4.Text = "Tồn kho";
             this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -379,9 +393,10 @@
             this.guna2Panel3.BorderThickness = 2;
             this.guna2Panel3.Controls.Add(this.label3);
             this.guna2Panel3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2Panel3.Location = new System.Drawing.Point(665, 362);
+            this.guna2Panel3.Location = new System.Drawing.Point(748, 452);
+            this.guna2Panel3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.guna2Panel3.Name = "guna2Panel3";
-            this.guna2Panel3.Size = new System.Drawing.Size(152, 44);
+            this.guna2Panel3.Size = new System.Drawing.Size(171, 55);
             this.guna2Panel3.TabIndex = 32;
             // 
             // label3
@@ -389,9 +404,9 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(26, 11);
+            this.label3.Location = new System.Drawing.Point(29, 14);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(102, 22);
+            this.label3.Size = new System.Drawing.Size(121, 26);
             this.label3.TabIndex = 0;
             this.label3.Text = "Đơn hàng ";
             // 
@@ -402,9 +417,10 @@
             this.guna2Panel2.BorderThickness = 2;
             this.guna2Panel2.Controls.Add(this.label2);
             this.guna2Panel2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.guna2Panel2.Location = new System.Drawing.Point(665, 187);
+            this.guna2Panel2.Location = new System.Drawing.Point(748, 234);
+            this.guna2Panel2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Size = new System.Drawing.Size(152, 44);
+            this.guna2Panel2.Size = new System.Drawing.Size(171, 55);
             this.guna2Panel2.TabIndex = 31;
             // 
             // label2
@@ -412,9 +428,9 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(23, 11);
+            this.label2.Location = new System.Drawing.Point(26, 14);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(101, 22);
+            this.label2.Size = new System.Drawing.Size(120, 26);
             this.label2.TabIndex = 0;
             this.label2.Text = "Doanh số ";
             // 
@@ -430,9 +446,10 @@
             this.guna2Button1.ForeColor = System.Drawing.Color.White;
             this.guna2Button1.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button1.Image")));
             this.guna2Button1.ImageAlign = System.Windows.Forms.HorizontalAlignment.Left;
-            this.guna2Button1.Location = new System.Drawing.Point(90, 115);
+            this.guna2Button1.Location = new System.Drawing.Point(101, 144);
+            this.guna2Button1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(198, 50);
+            this.guna2Button1.Size = new System.Drawing.Size(223, 62);
             this.guna2Button1.TabIndex = 29;
             this.guna2Button1.Text = "1 năm qua";
             // 
@@ -440,9 +457,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(142, 49);
+            this.label1.Location = new System.Drawing.Point(160, 61);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(189, 38);
+            this.label1.Size = new System.Drawing.Size(228, 46);
             this.label1.TabIndex = 28;
             this.label1.Text = "Tổng Quan";
             // 
@@ -452,7 +469,8 @@
             this.guna2PictureBox1.BorderRadius = 19;
             this.guna2PictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("guna2PictureBox1.Image")));
             this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(90, 45);
+            this.guna2PictureBox1.Location = new System.Drawing.Point(101, 56);
+            this.guna2PictureBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.guna2PictureBox1.Name = "guna2PictureBox1";
             this.guna2PictureBox1.Size = new System.Drawing.Size(40, 40);
             this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -461,7 +479,7 @@
             // 
             // NoiDungTrangChu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(239)))), ((int)(((byte)(227)))));
             this.Controls.Add(this.bangTrangChu);
@@ -476,8 +494,9 @@
             this.Controls.Add(this.guna2Button1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.guna2PictureBox1);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "NoiDungTrangChu";
-            this.Size = new System.Drawing.Size(1435, 744);
+            this.Size = new System.Drawing.Size(1614, 930);
             this.Load += new System.EventHandler(this.NoiDungTrangChu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bangTrangChu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cNPMdatabaseDataSetBindingSource1)).EndInit();

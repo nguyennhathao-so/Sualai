@@ -44,11 +44,13 @@
             this.guna2OK.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
             this.guna2OK.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2OK.ForeColor = System.Drawing.Color.Black;
-            this.guna2OK.Location = new System.Drawing.Point(159, 84);
+            this.guna2OK.Location = new System.Drawing.Point(179, 105);
+            this.guna2OK.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.guna2OK.Name = "guna2OK";
-            this.guna2OK.Size = new System.Drawing.Size(100, 30);
+            this.guna2OK.Size = new System.Drawing.Size(112, 38);
             this.guna2OK.TabIndex = 6;
             this.guna2OK.Text = "Ok";
+            this.guna2OK.Click += new System.EventHandler(this.guna2OK_Click);
             // 
             // huy
             // 
@@ -61,34 +63,38 @@
             this.huy.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(217)))), ((int)(((byte)(217)))), ((int)(((byte)(217)))));
             this.huy.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.huy.ForeColor = System.Drawing.Color.Black;
-            this.huy.Location = new System.Drawing.Point(40, 84);
+            this.huy.Location = new System.Drawing.Point(45, 105);
+            this.huy.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.huy.Name = "huy";
-            this.huy.Size = new System.Drawing.Size(100, 30);
+            this.huy.Size = new System.Drawing.Size(112, 38);
             this.huy.TabIndex = 5;
             this.huy.Text = "Hủy";
+            this.huy.Click += new System.EventHandler(this.huy_Click);
             // 
             // labelXacNhan
             // 
             this.labelXacNhan.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelXacNhan.Location = new System.Drawing.Point(21, 13);
+            this.labelXacNhan.Location = new System.Drawing.Point(24, 16);
             this.labelXacNhan.Name = "labelXacNhan";
-            this.labelXacNhan.Size = new System.Drawing.Size(255, 68);
+            this.labelXacNhan.Size = new System.Drawing.Size(287, 85);
             this.labelXacNhan.TabIndex = 4;
             this.labelXacNhan.Text = "Xác nhận đăng xuất";
             this.labelXacNhan.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // XacNhanDangXuat
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(296, 127);
+            this.ClientSize = new System.Drawing.Size(333, 159);
             this.Controls.Add(this.guna2OK);
             this.Controls.Add(this.huy);
             this.Controls.Add(this.labelXacNhan);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.MaximumSize = new System.Drawing.Size(296, 127);
-            this.MinimumSize = new System.Drawing.Size(296, 127);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.MaximumSize = new System.Drawing.Size(333, 159);
+            this.MinimumSize = new System.Drawing.Size(333, 159);
             this.Name = "XacNhanDangXuat";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "XacNhanDangXuat";
             this.ResumeLayout(false);
 
